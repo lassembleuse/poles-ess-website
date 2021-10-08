@@ -5,30 +5,30 @@ RSpec.describe Formation, type: :model do
   describe "ordering scopes" do
     let!(:cat1) { create(:formation_category, position: 2) }
     let!(:cat2) { create(:formation_category, position: 1) }
-    let!(:ref_date) { Time.zone.now }
+    let!(:ref_date) { Time.zone.now.midday }
 
     let!(:formation_cat1_2) {
-      Formation.create(title: "1", formation_category_id: cat1.id, schedules_attributes: 
+      Formation.create(title: "1", formation_category_id: cat1.id, schedules_attributes:
         [{ time_range: (ref_date+1.month..ref_date+1.month+2.hours) }])
     }
 
     let!(:formation_cat1_last_year) {
-      Formation.create(title: "Last year", formation_category_id: cat1.id, schedules_attributes: 
+      Formation.create(title: "Last year", formation_category_id: cat1.id, schedules_attributes:
         [{ time_range: (ref_date-1.year..ref_date-1.year+2.hours) }])
     }
 
     let!(:formation_cat1_3) {
-      Formation.create(title: "3", formation_category_id: cat1.id, schedules_attributes: 
+      Formation.create(title: "3", formation_category_id: cat1.id, schedules_attributes:
         [{ time_range: (ref_date+2.month..ref_date+2.month+2.hours) }])
     }
 
     let!(:formation_cat1_1) {
-      Formation.create(title: "1", formation_category_id: cat1.id, schedules_attributes: 
+      Formation.create(title: "1", formation_category_id: cat1.id, schedules_attributes:
         [{ time_range: (ref_date+1.week..ref_date+1.week+2.hours) }])
     }
 
     let!(:formation_cat2_1) {
-      Formation.create(title: "cat2", formation_category_id: cat2.id, schedules_attributes: 
+      Formation.create(title: "cat2", formation_category_id: cat2.id, schedules_attributes:
         [{ time_range: (ref_date+2.week..ref_date+2.week+2.hours) }])
     }
 
@@ -75,17 +75,17 @@ RSpec.describe Formation, type: :model do
     let!(:ref_date) { Time.zone.now.beginning_of_year }
 
     let!(:formation_cat1_2) {
-      Formation.create(title: "1", formation_category_id: cat1.id, schedules_attributes: 
+      Formation.create(title: "1", formation_category_id: cat1.id, schedules_attributes:
         [{ time_range: (ref_date+1.month..ref_date+1.month+2.hours) }])
     }
 
     let!(:formation_cat1_last_year) {
-      Formation.create(title: "Last year", formation_category_id: cat1.id, schedules_attributes: 
+      Formation.create(title: "Last year", formation_category_id: cat1.id, schedules_attributes:
         [{ time_range: (ref_date-1.year..ref_date-1.year+2.hours) }])
     }
 
     let!(:formation_cat1_1) {
-      Formation.create(title: "1", formation_category_id: cat1.id, schedules_attributes: 
+      Formation.create(title: "1", formation_category_id: cat1.id, schedules_attributes:
         [{ time_range: (ref_date+1.week..ref_date+1.week+2.hours) }])
     }
 
