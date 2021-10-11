@@ -10,7 +10,7 @@
       = f.label :baseline
       = f.text_field :baseline, value: Setting.baseline, class: "form-control"
 
-    fieldset.border.p-2
+    fieldset.border.p-2.mb-4
       legend.w-auto Informations de contact
       .form-group
         = f.label :pole_address
@@ -28,7 +28,7 @@
         = f.label :pole_mail
         = f.text_field :pole_mail, value: Setting.pole_mail, class: "form-control"
 
-    fieldset.border.p-2
+    fieldset.border.p-2.mb-4
       legend.w-auto Bloc newsletter
       .form-group
         = f.label :newsletter_subscription_title
@@ -37,7 +37,7 @@
         = f.label :newsletter_subscription_description
         = f.text_field :newsletter_subscription_description, value: Setting.newsletter_subscription_description, class: "form-control"
 
-    fieldset.border.p-2
+    fieldset.border.p-2.mb-4
       legend.w-auto Bloc contact
       .form-group
         = f.label :contact_bloc_description
@@ -46,7 +46,7 @@
         = f.label :contact_bloc_button
         = f.text_field :contact_bloc_button, value: Setting.contact_bloc_button, class: "form-control"
 
-    fieldset.border.p-2
+    fieldset.border.p-2.mb-4
       legend.w-auto Réseaux sociaux
       .form-group
         = f.label :facebook
@@ -71,6 +71,10 @@
     .form-group
       = f.label :map_link
       = f.text_field :map_link, value: Setting.map_link, class: "form-control"
+
+    .form-group
+      = f.label :highlighted_feature
+      = f.select :highlighted_feature, highlighted_feature_options, { selected: Setting.highlighted_feature, include_blank: 'Aucune' }, class: "form-control"
 
     / h4.mb-4 Logo blanc
     / .d-flex data-controller='file-upload'

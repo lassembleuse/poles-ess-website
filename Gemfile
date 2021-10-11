@@ -14,7 +14,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 # DB / Model ==============================================
 gem "devise", "~> 4.7"
-gem "rails-settings-cached", "~> 2.0"
+gem "rails-settings-cached", "~> 2"
 gem 'acts_as_list'
 gem 'pg_search'
 
