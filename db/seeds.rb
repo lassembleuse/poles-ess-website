@@ -45,7 +45,7 @@ Setting.admin_emails = %w[bonjour@lassembleuse.fr, coordination@portesdebretagne
   { key: 'legal_mentions', title: 'Mentions légales', enabled: true },
   { key: 'cgu', title: 'Conditions d\'utilisation', enabled: true },
   { key: 'contact', title: 'Contact', enabled: true },
-  { key: 'ess_map', title: 'Cartographie', enabled: true }
+  # { key: 'ess_map', title: 'Cartographie', enabled: true }
 ].each do |option|
   BasicPage.where(key: option[:key]).first_or_create(
     enabled: option[:enabled],
@@ -90,11 +90,11 @@ end
     { key: 'adherent', title: 'Adhérent.e.s', enabled: true, position: 4 },
     { key: 'partner', title: 'Partenaires', enabled: true, position: 5 },
     { key: 'membership', title: 'Adhérer au réseau ESS du Pôle', enabled: true, position: 6 },
+    { key: 'ess_map', title: 'Cartographie', enabled: true, position: 7 },
   ] },
   # { title: "L'ESS", baseline: "Découvrez l'économie sociale et solidaire", position: 2, child_pages: [
   #   { key: nil, title: "C'est quoi l'ESS?", enabled: true, position: 1 },
   #   { key: 'key_number', title: 'Chiffres-clés', enabled: true, position: 2 },
-  #   { key: 'ess_map', title: 'Cartographie', enabled: true, position: 3 },
   # ] },
 ].each do |option|
   main_page = MainPage.where(title: option[:title]).first_or_create(
