@@ -9,6 +9,9 @@
     .form-group
       = f.label :baseline
       = f.text_field :baseline, value: Setting.baseline, class: "form-control"
+    .form-group
+      = f.label :highlighted_feature
+      = f.select :highlighted_feature, highlighted_feature_options, { selected: Setting.highlighted_feature, include_blank: 'Aucune' }, class: "form-control"
 
     fieldset.border.p-2.mb-4
       legend.w-auto Informations de contact
@@ -71,10 +74,6 @@
     .form-group
       = f.label :map_link
       = f.text_field :map_link, value: Setting.map_link, class: "form-control"
-
-    .form-group
-      = f.label :highlighted_feature
-      = f.select :highlighted_feature, highlighted_feature_options, { selected: Setting.highlighted_feature, include_blank: 'Aucune' }, class: "form-control"
 
     / h4.mb-4 Logo blanc
     / .d-flex data-controller='file-upload'
