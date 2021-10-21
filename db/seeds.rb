@@ -36,6 +36,7 @@ Setting.newsletter_subscription_description = "Anti-newsletter ? Une info par le
 Setting.contact_bloc_description = "Vous avez des tonnes de question ? Vous souhaitez mieux identifier ce qui existe sur le territoire ?" if Setting.contact_bloc_description.blank?
 Setting.contact_bloc_button = "Contacter le pôle" if Setting.contact_bloc_button.blank?
 Setting.admin_emails = %w[bonjour@lassembleuse.fr]    if Setting.admin_emails.blank?
+Setting.highlighted_feature = 'formations'    if Setting.highlighted_feature.blank?
 
 EmailTemplate.where(mailer: "ParticipantMailer", mail_name: "new_subscription").first_or_create(body: "Le pôle vous recontactera rapidement pour préciser les détails pratiques et le règlement.")
 
@@ -92,19 +93,21 @@ end
   { title: "L'ESS", baseline: "Découvrez l'économie sociale et solidaire", position: 2, child_pages: [
     { key: nil, title: "C'est quoi l'ESS?", enabled: true, position: 1 },
     { key: 'key_number', title: 'Chiffres-clés', enabled: true, position: 2 },
-    { key: 'ess_map', title: 'Cartographie', enabled: true, position: 3 },
   ] },
+  { key: 'ess_map', title: 'Cartographie', enabled: true, position: 3 },
 ].each do |option|
   main_page = MainPage.where(title: option[:title]).first_or_create(
     baseline: option[:baseline],
     position: option[:position]
   )
-  option[:child_pages].each do |child_page_h|
-    main_page.child_pages.where(key: child_page_h[:key]).first_or_create(
-      title: child_page_h[:title],
-      enabled: child_page_h[:enabled],
-      position: child_page_h[:position]
-    )
+  if option[:child_pages].present?
+    option[:child_pages].each do |child_page_h|
+      main_page.child_pages.where(key: child_page_h[:key]).first_or_create(
+        title: child_page_h[:title],
+        enabled: child_page_h[:enabled],
+        position: child_page_h[:position]
+      )
+    end
   end
 end
 
