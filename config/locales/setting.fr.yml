@@ -28,6 +28,7 @@ fr:
         reglement_formation: Modalité de règlement des formations
         map_link: Url de la cartographie
         highlighted_feature: Page mise en avant (dans le menu du haut)
+        enabled_features: Fonctionnalités activées
     submit:
       setting:
         create: "Mettre à jour les paramètres"
@@ -46,4 +47,8 @@ fr:
       icons:
         formations: "picto/Picto-formations-light.svg"
         posts: "picto/Picto-posts-light.svg"
+    enabled_features:
+      labels:
+        formations: Formations
+        key_numbers: Chiffres-clés
 

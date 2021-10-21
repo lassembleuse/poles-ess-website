@@ -23,9 +23,9 @@ html lang="#{I18n.locale}"
                 = link_to "#{Setting.pole_name} Admin", admin_root_path, class: "nav-link "
               li.nav-item
                 = active_link_to 'Tableau de bord', admin_root_path, title: "Retour à l'accueil", class: "nav-link", active: :exclusive
-              li.nav-item.nav-header 
+              li.nav-item.nav-header
                 span.nav-link Contenus chauds
-                ul 
+                ul
                   li.nav-item
                     = active_link_to admin_activities_path, title: "Gérer les actions", class: "nav-link", active: :inclusive do
                       i.fas.fa-fire>
@@ -34,25 +34,22 @@ html lang="#{I18n.locale}"
                     = active_link_to admin_posts_path, title: "Gérer les actus", class: "nav-link", active: :inclusive do
                       i.fas.fa-fire>
                       ' Actualités
-                  / li.nav-item
-                  /   = active_link_to "#", title: "Gérer les actus", class: "nav-link disabled", active: :exclusive do
-                  /     i.fas.fa-fire>
-                  /     ' Ressources
                   li.nav-item
                     = active_link_to admin_events_path, title: "Gérer les événements", class: "nav-link", active: :inclusive do
                       i.fas.fa-fire>
                       ' Evénements
-              li.nav-item.nav-header
-                span.nav-link Formations
-                ul
-                  li.nav-item
-                    = active_link_to admin_participants_path, title: "Gérer les participants", class: "nav-link", active: :inclusive do
-                      i.fas.fa-chalkboard-teacher>
-                      ' Participant·es
-                  li.nav-item
-                    = active_link_to admin_formations_path, title: "Gérer les formations", class: "nav-link", active: :inclusive do
-                      i.fas.fa-chalkboard-teacher>
-                      ' Formations
+              - if feature_enabled?('formations')
+                li.nav-item.nav-header
+                  span.nav-link Formations
+                  ul
+                    li.nav-item
+                      = active_link_to admin_participants_path, title: "Gérer les participants", class: "nav-link", active: :inclusive do
+                        i.fas.fa-chalkboard-teacher>
+                        ' Participant·es
+                    li.nav-item
+                      = active_link_to admin_formations_path, title: "Gérer les formations", class: "nav-link", active: :inclusive do
+                        i.fas.fa-chalkboard-teacher>
+                        ' Formations
               li.nav-item.nav-header
                 span.nav-link Contenus froids
                 ul
@@ -69,10 +66,11 @@ html lang="#{I18n.locale}"
                       i.fas.fa-snowflake>
                       ' Pages
                     ul.dropdown
-                      li.nav-item
-                        = active_link_to admin_key_numbers_path, title: "Gérer les chiffres clés", class: "nav-link", active: :inclusive do
-                          i.fas.fa-snowflake>
-                          ' Chiffres clés
+                      - if feature_enabled?('key_numbers')
+                        li.nav-item
+                          = active_link_to admin_key_numbers_path, title: "Gérer les chiffres clés", class: "nav-link", active: :inclusive do
+                            i.fas.fa-snowflake>
+                            ' Chiffres clés
                       li.nav-item
                         = active_link_to admin_staff_members_path, title: "Gérer les membres de l'équipe", class: "nav-link", active: :inclusive do
                           i.fas.fa-snowflake>

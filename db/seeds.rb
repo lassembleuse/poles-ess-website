@@ -37,6 +37,8 @@ Setting.contact_bloc_description = "Vous avez des tonnes de question ? Vous souh
 Setting.contact_bloc_button = "Contacter le pôle" if Setting.contact_bloc_button.blank?
 Setting.admin_emails = %w[bonjour@lassembleuse.fr]    if Setting.admin_emails.blank?
 Setting.highlighted_feature = 'formations'    if Setting.highlighted_feature.blank?
+Setting.enabled_features = ['formations', 'key_numbers']
+
 
 EmailTemplate.where(mailer: "ParticipantMailer", mail_name: "new_subscription").first_or_create(body: "Le pôle vous recontactera rapidement pour préciser les détails pratiques et le règlement.")
 

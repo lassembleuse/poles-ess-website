@@ -20,4 +20,7 @@ module SettingHelper
     I18n.t(Setting.highlighted_feature, scope: %i(setting highlighted_feature icons))
   end
 
+  def feature_enabled?(feature)
+    Setting.enabled_features.include?(feature)
+  end
 end
