@@ -36,9 +36,10 @@ html lang='fr'
             = active_link_to main_page_path(@ess_map_page), active: :inclusive, class: "picto-link px-2" do
               = image_pack_tag "picto/Picto-carto.svg", class: "w-10 mb-2"
               ' Cartographie
-            = active_link_to formations_path, active: :inclusive, class: "picto-link picto-link--highlighted px-2" do
-              = image_pack_tag "picto/Picto-formations-light.svg", class: "w-10 mb-2"
-              ' Formations
+            - if Setting.highlighted_feature.present?
+              = active_link_to highlighted_feature_path, active: :inclusive, class: "picto-link picto-link--highlighted px-2" do
+                = image_pack_tag highlighted_feature_icon, class: "w-10 mb-2"
+                = highlighted_feature_title
             = active_link_to basic_page_path(@contact_page), active: :inclusive, class: "picto-link pl-2" do
               = image_pack_tag "picto/Picto-contact.svg", class: "w-10 mb-2"
               ' Contact
@@ -101,7 +102,7 @@ html lang='fr'
                   li = link_to theme.title, theme_path(theme), class: "footer-link"
             .w-1/2.md:w-1/3.py-3.md:py-8.px-3
               .footer-title Profils
-              ul 
+              ul
                 - @profiles.each do |profile|
                   li = link_to profile.title, profile_path(profile), class: "footer-link"
             .w-1/2.md:w-1/3.py-3.md:py-8.px-3
@@ -137,7 +138,7 @@ html lang='fr'
             .credit.px-3
               span.emphasis=> Date.current.year
               => link_to "l'assembleuse", "https://www.lassembleuse.fr/"
-              ' & 
+              ' &
               = link_to "© Ellllsa", "https://ellllsa.com/"
 
             .separator.hidden.md:block.white.h-4.my-auto

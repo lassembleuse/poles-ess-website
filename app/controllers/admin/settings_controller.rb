@@ -5,7 +5,13 @@ class Admin::SettingsController < Admin::BaseController
 
   def create
     setting_params.keys.each do |key|
-      Setting.send("#{key}=", setting_params[key].strip) unless setting_params[key].nil?
+      unless setting_params[key].nil?
+        if setting_params[key].is_a?Array
+          Setting.send("#{key}=", setting_params[key])
+        else
+          Setting.send("#{key}=", setting_params[key].strip)
+        end
+      end
     end
     if setting_upload_params.present? && !(Setting.logo_instance.update(setting_upload_params))
       update_logos
@@ -18,10 +24,10 @@ class Admin::SettingsController < Admin::BaseController
   private
 
   def setting_params
-    params.require(:setting).permit(:pole_name, :pole_address, :pole_address_complementary, :pole_city, :pole_phone, :pole_mail,
+    params.require(:setting).permit(:enabled_features, :pole_name, :pole_address, :pole_address_complementary, :pole_city, :pole_phone, :pole_mail,
       :baseline, :newsletter_subscription_title, :newsletter_subscription_description, :admin_emails,
-      :contact_bloc_description, :contact_bloc_button, :default_tickets_count, :facebook, :instagram, 
-      :reglement_formation, :map_link)
+      :contact_bloc_description, :contact_bloc_button, :default_tickets_count, :facebook, :instagram,
+      :reglement_formation, :map_link, :highlighted_feature, enabled_features: [])
   end
 
   def setting_upload_params

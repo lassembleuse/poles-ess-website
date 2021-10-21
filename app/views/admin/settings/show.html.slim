@@ -10,7 +10,35 @@
       = f.label :baseline
       = f.text_field :baseline, value: Setting.baseline, class: "form-control"
 
-    fieldset.border.p-2
+    fieldset.border.p-2.mb-4
+      legend.w-auto Paramétrage du site
+      .form-group
+        = f.label :highlighted_feature
+        = f.select :highlighted_feature, highlighted_feature_options, { selected: Setting.highlighted_feature, include_blank: 'Aucune' }, class: "form-control"
+
+      .form-group
+        = f.label :enabled_features
+        br
+        = hidden_field_tag "setting[enabled_features][]", nil
+        - Setting::ENABLABLE_FEATURES.each do |label|
+          .form-check.form-check-inline
+            => f.check_box :enabled_features, {multiple: true,
+                      checked: Setting.enabled_features.include?(label),
+                      class: 'form-check-input'},
+                      label, nil
+            = f.label :enabled_features, I18n.t(label, scope: %i(setting enabled_features labels)), value: label, class: "form-check-label"
+        p.small.font-italic Toutes les fonctionnalités hormis celles-ci sont activées par défaut
+
+      .form-group
+        = f.label :map_link
+        = f.text_field :map_link, value: Setting.map_link, class: "form-control"
+
+      .form-group
+        = f.label :admin_emails
+        = f.text_area :admin_emails, value: Setting.admin_emails&.join("\n"), class: "form-control"
+        p.small.font-italic Emails auxquels seront envoyées les notifications
+
+    fieldset.border.p-2.mb-4
       legend.w-auto Informations de contact
       .form-group
         = f.label :pole_address
@@ -28,7 +56,7 @@
         = f.label :pole_mail
         = f.text_field :pole_mail, value: Setting.pole_mail, class: "form-control"
 
-    fieldset.border.p-2
+    fieldset.border.p-2.mb-4
       legend.w-auto Bloc newsletter
       .form-group
         = f.label :newsletter_subscription_title
@@ -37,7 +65,7 @@
         = f.label :newsletter_subscription_description
         = f.text_field :newsletter_subscription_description, value: Setting.newsletter_subscription_description, class: "form-control"
 
-    fieldset.border.p-2
+    fieldset.border.p-2.mb-4
       legend.w-auto Bloc contact
       .form-group
         = f.label :contact_bloc_description
@@ -46,7 +74,7 @@
         = f.label :contact_bloc_button
         = f.text_field :contact_bloc_button, value: Setting.contact_bloc_button, class: "form-control"
 
-    fieldset.border.p-2
+    fieldset.border.p-2.mb-4
       legend.w-auto Réseaux sociaux
       .form-group
         = f.label :facebook
@@ -55,22 +83,16 @@
         = f.label :instagram
         = f.text_field :instagram, value: Setting.instagram, class: "form-control"
 
-    .form-group
-      = f.label :default_tickets_count
-      = f.number_field :default_tickets_count, value: Setting.default_tickets_count, class: "form-control"
+    - if feature_enabled?('formations')
+      fieldset.border.p-2.mb-4
+        legend.w-auto Formations
+        .form-group
+          = f.label :default_tickets_count
+          = f.number_field :default_tickets_count, value: Setting.default_tickets_count, class: "form-control"
 
-    .form-group
-      = f.label :admin_emails
-      = f.text_area :admin_emails, value: Setting.admin_emails.join("\n"), class: "form-control"
-      p.small.font-italic Emails auxquels seront envoyées les notifications
-
-    .form-group
-      = f.label :reglement_formation
-      = f.text_field :reglement_formation, value: Setting.reglement_formation, class: "form-control"
-
-    .form-group
-      = f.label :map_link
-      = f.text_field :map_link, value: Setting.map_link, class: "form-control"
+        .form-group
+          = f.label :reglement_formation
+          = f.text_field :reglement_formation, value: Setting.reglement_formation, class: "form-control"
 
     / h4.mb-4 Logo blanc
     / .d-flex data-controller='file-upload'

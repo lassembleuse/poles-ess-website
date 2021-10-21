@@ -4,6 +4,9 @@ class Setting < RailsSettings::Base
   has_one_attached :logo
   has_one_attached :logo_primary
 
+  HIGHLIGHTED_FEATURES = %w[formations posts]
+  ENABLABLE_FEATURES = %w[formations key_numbers]
+
   field :pole_name, type: :string
   field :pole_address, type: :string
   field :pole_address_complementary, type: :string
@@ -23,6 +26,8 @@ class Setting < RailsSettings::Base
   field :admin_emails, type: :array
   field :facebook, type: :string
   field :instagram, type: :string
+  field :highlighted_feature, default: 'formations', validates: { inclusion: { in: HIGHLIGHTED_FEATURES + [''] } }, option_values: HIGHLIGHTED_FEATURES
+  field :enabled_features, type: :array, default: ENABLABLE_FEATURES
 
   validates :logo, content_type: { in: ['image/png', 'image/jpg', 'image/jpeg'], message: 'doit être une image' }
 

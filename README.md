@@ -15,6 +15,7 @@ Staging : https://pole-ess-staging.osc-fr1.scalingo.io/
 
 ## Commandes utiles
 
+```
   g push scalingo master
   scalingo run rails c --app pole-ess-staging
   scalingo run rails db:migrate --app pole-ess-staging
@@ -24,7 +25,7 @@ Staging : https://pole-ess-staging.osc-fr1.scalingo.io/
   scalingo -a pole-ess-staging run --env RAILS_MASTER_KEY=value
 
   EDITOR=vim rails credentials:edit --environment staging
-
+```
 
 Pour déployer les forks :
   `./deploy-forks.sh`

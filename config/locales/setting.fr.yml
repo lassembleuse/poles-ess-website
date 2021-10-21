@@ -25,14 +25,30 @@ fr:
         default_tickets_count: Nombre de participant formation par défaut
         logo:           Logo
         admin_emails:   Emails admin
+        reglement_formation: Modalité de règlement des formations
+        map_link: Url de la cartographie
+        highlighted_feature: Page mise en avant (dans le menu du haut)
+        enabled_features: Fonctionnalités activées
     submit:
       setting:
         create: "Mettre à jour les paramètres"
         update: "Mettre à jour les paramètres"
+  setting:
+    highlighted_feature:
+      options:
+        formations: Formations
+        posts: Actualités
+      paths:
+        formations: formations_path
+        posts: posts_path
+      titles:
+        formations: Formations
+        posts: Actualités
+      icons:
+        formations: "picto/Picto-formations-light.svg"
+        posts: "picto/Picto-posts-light.svg"
+    enabled_features:
+      labels:
+        formations: Formations
+        key_numbers: Chiffres-clés
 
-
-      newsletter_subscription_title:
-      newsletter_subscription_description:
-      contact_bloc_description:
-      contact_bloc_button:
-      default_tickets_count:
