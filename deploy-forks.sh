@@ -20,5 +20,20 @@ deploy_site_broceliande () {
   echo 'Fin deploiement broceliande'
 }
 
+deploy_site_vitre () {
+  echo 'Debut deploiement vitre'
+  deploy_site '../vitre-website'
+  echo 'Fin deploiement vitre'
+}
+
+deploy_from_upstream () {
+  git remote add upstream https://github.com/lassembleuse/poles-ess-website.git
+  git fetch upstream
+  git checkout master
+  git merge upstream/master
+  git push origin master
+}
+
 deploy_site_vallons
 deploy_site_broceliande
+deploy_site_vitre
