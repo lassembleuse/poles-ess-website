@@ -1,6 +1,9 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    MailchimpMarketing (3.0.70)
+      excon (>= 0.76.0, < 1)
+      json (~> 2.1, >= 2.1.0)
     actioncable (6.0.4.1)
       actionpack (= 6.0.4.1)
       nio4r (~> 2.0)
@@ -299,6 +302,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  MailchimpMarketing
   active_link_to
   active_storage_validations
   activestorage-openstack

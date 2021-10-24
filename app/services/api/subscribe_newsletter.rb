@@ -6,10 +6,11 @@ module Api
     end
 
     def call(email)
-      params = @api_instance.add_subscriber_params(email)
-      @api_instance.create_subscriber(params)
+      @api_instance.create_subscriber(email)
     end
   end
+
+  class SubscribeNewsletterError < StandardError; end
 end
 
 
