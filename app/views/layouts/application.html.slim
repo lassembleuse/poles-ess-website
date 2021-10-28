@@ -51,9 +51,10 @@ html lang='fr'
           = active_link_to main_page_path(@ess_map_page), active: :inclusive, class: "flex px-3 py-2 items-center uppercase" do
             = image_pack_tag "picto/Picto-carto.svg", class: "w-6 mr-3"
             p Cartographie
-          = active_link_to formations_path, active: :inclusive, class: "flex px-3 py-2 items-center uppercase" do
-            = image_pack_tag "picto/Picto-formations.svg", class: "w-6 mr-3"
-            ' Formations
+          - if Setting.highlighted_feature.present?
+            = active_link_to highlighted_feature_path, active: :inclusive, class: "flex px-3 py-2 items-center uppercase" do
+              = image_pack_tag highlighted_feature_icon, class: "w-6 mr-3"
+              = highlighted_feature_title
           = active_link_to basic_page_path(@contact_page), active: :inclusive, class: "flex px-3 py-2 items-center uppercase" do
             = image_pack_tag "picto/Picto-contact.svg", class: "w-6 mr-3"
             ' Contact
@@ -80,7 +81,7 @@ html lang='fr'
 
     .footer
       .footer-line.w-full.bg-primary
-      .newsletter-subscription.bg-c-gray-100
+      #newsletter-block.newsletter-subscription.bg-c-gray-100
         .max-w-6xl.mx-auto.flex.flex-col.md:flex-row.py-10
           .w-full.md:w-3/5.text-center.md:text-right.px-6
             p.text-body.text-base.uppercase = Setting.newsletter_subscription_title
@@ -111,8 +112,10 @@ html lang='fr'
                 li = link_to "Actualités", posts_path, class: "footer-link"
                 li = link_to "Actions", activities_path, class: "footer-link"
                 li = link_to "Evénements", events_path, class: "footer-link"
-                li = link_to "Formations", formations_path, class: "footer-link"
-                li = link_to "Chiffres clés", key_numbers_path, class: "footer-link"
+                - if feature_enabled?('formations')
+                  li = link_to "Formations", formations_path, class: "footer-link"
+                - if feature_enabled?('key_numbers')
+                  li = link_to "Chiffres clés", key_numbers_path, class: "footer-link"
                 li = link_to "Ressources", resources_path, class: "footer-link"
           .separator.hidden.md:block.h-7.my-auto
           .w-full.md:w-1/3.py-3.md:py-8.px-8
