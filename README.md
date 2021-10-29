@@ -10,8 +10,10 @@ Staging : https://pole-ess-staging.osc-fr1.scalingo.io/
 ## Todo
 
 - revoir seeds et archi du site
-- config mailchimp
-- config fog
+- encart page accueil formation
+- check emoji - action/mois-ess
+- bug chiffre-clé
+
 
 ## Commandes utiles
 
