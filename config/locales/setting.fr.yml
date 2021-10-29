@@ -44,9 +44,21 @@ fr:
       titles:
         formations: Formations
         posts: Actualités
+      block_questions:
+        formations: Vous souhaitez gagner en compétence ou professionnaliser votre équipe ?
+        posts: Vous souhaitez être tenu au courant des actualités et événements du pôle ?
+      block_buttons:
+        formations: "S'inscrire aux formations"
+        posts: S'inscrire à la newsletter
+      block_paths:
+        formations: formations_path
+        posts: '#newsletter-block'
+      block_icons:
+        formations: "picto/Picto-formations.svg"
+        posts: "picto/Picto-actus.svg"
       icons:
         formations: "picto/Picto-formations-light.svg"
-        posts: "picto/Picto-posts-light.svg"
+        posts: "picto/Picto-actus.svg"
     enabled_features:
       labels:
         formations: Formations

@@ -1,0 +1,6 @@
+.w-full.md:w-1/2.text-center.bg-c-gray-100.py-12.pr-6.md:mr-3.relative
+  = render 'layouts/bg-pic', filename: 'pic-home-01'
+  .md:w-3/5.ml-auto
+    p.text-2xl.uppercase.mb-3 = highlighted_feature_block_question
+    = image_pack_tag highlighted_feature_block_icon, class: "w-20 mb-6 mx-auto"
+    = link_to highlighted_feature_block_button, highlighted_feature_block_path, class: "btn btn-primary"
