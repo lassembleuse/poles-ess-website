@@ -1,6 +1,6 @@
 .flex.flex-col.md:flex-row.mt-4
-  = render 'layouts/bg-pic', filename: @theme.title.parameterize, css_class: 'theme-illus'
-  .md:w-1/6
+  .md:w-1/6.theme-illus__wrapper
+    = render 'layouts/bg-pic', filename: @theme.title.parameterize, css_class: 'theme-illus'
   .md:w-3/6.bg-white.p-6
     = render 'layouts/breadcrumb'
     h1.main-title.mt-4.mb-10 = @theme.title
