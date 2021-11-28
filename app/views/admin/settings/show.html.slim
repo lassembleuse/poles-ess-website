@@ -87,6 +87,9 @@
       .form-group
         = f.label :instagram
         = f.text_field :instagram, value: Setting.instagram, class: "form-control"
+      .form-group
+        = f.label :linkedin
+        = f.text_field :linkedin, value: Setting.linkedin, class: "form-control"
 
     - if feature_enabled?('formations')
       fieldset.border.p-2.mb-4
