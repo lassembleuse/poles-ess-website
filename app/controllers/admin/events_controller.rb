@@ -19,7 +19,7 @@ class Admin::EventsController < Admin::BaseController
       flash[:notice] = "L'événement a été créé avec succès"
       redirect_to params[:continue].present? ? edit_admin_event_path(@event) : admin_events_path
     else
-      @event.schedules.new if @event.schedule.nil?
+      @event.schedules.new if @event.schedules.empty?
       flash[:error] = "Une erreur s'est produite lors de la mise à jour de l'événement"
       render :new
     end
