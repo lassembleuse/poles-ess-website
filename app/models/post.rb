@@ -76,7 +76,7 @@ class Post < ApplicationRecord
     relationships << self.themes.enabled
     relationships << self.profiles.enabled
     relationships << self.post_category
-    relationships.flatten
+    relationships.compact.flatten
   end
 
   def publication_state
