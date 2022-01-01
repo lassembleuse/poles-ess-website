@@ -20,7 +20,7 @@ module Schedulable
       eager_load(:first_schedule).merge(Schedule.future)
     }
     scope :in_most_recent_year, -> {
-      eager_load(:first_schedule).merge(Schedule.in_most_recent_year)
+      eager_load(:first_schedule).merge(Schedule.for(self.klass.name).in_most_recent_year)
     }
     scope :by_year, -> (year) {
       eager_load(:first_schedule).merge(Schedule.by_year(year)).references(:schedules)
