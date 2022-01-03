@@ -20,7 +20,8 @@
     = render 'layouts/breadcrumb'
     h1.main-title.mt-4.mb-8 Formations
     - if params[:sort] == 'by_future'
-      = render partial: 'formations/formation_card', collection: @formations, as: :formation
+      = render(partial: 'formations/formation_card', collection: @formations, as: :formation) || content_tag("p") do
+        ' Il n'y a pas encore de formation à venir
       .text-center.mb-5
         = paginate @formations
     - else

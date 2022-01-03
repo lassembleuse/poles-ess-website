@@ -1,4 +1,4 @@
 .relationships.leading-3
-  - item.relationships.each do |item|
+  - item.relationships.each do |relationship|
     .category-tag
-      = link_to item.title, polymorphic_path(item)
+      = link_to relationship.title, polymorphic_path(relationship)

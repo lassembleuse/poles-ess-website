@@ -12,6 +12,10 @@ class Schedule < ApplicationRecord
 
   # Scopes ====================================================================
 
+  scope :for, -> (type) {
+    where(schedulable_type: type)
+  }
+
   scope :future, -> {
     where("lower(time_range) > ?", Time.zone.now)
   }
@@ -70,8 +74,8 @@ class Schedule < ApplicationRecord
     current_year_schedules = self.between_datetime(Time.zone.now.beginning_of_year, Time.zone.now.end_of_year)
     return current_year_schedules if current_year_schedules.any?
     # Cas du site non mis à jour, avec dernières formations remontant à un ou 2 ans par ex
-    most_recent_date_with_formation = Schedule.sort_by_start_date.last&.begin
-    return self.between_datetime(most_recent_date_with_formation.beginning_of_year, most_recent_date_with_formation.end_of_year) if most_recent_date_with_formation
+    most_recent_date = self.sort_by_start_date.last&.time_range&.begin
+    return self.between_datetime(most_recent_date.beginning_of_year, most_recent_date.end_of_year) if most_recent_date
     return all
   end
 
@@ -164,7 +168,7 @@ class Schedule < ApplicationRecord
     # Return true because of this : https://stackoverflow.com/questions/22926614/rails-4-model-is-valid-but-wont-save
     return true
   end
-  
+
   def validate_time_range
     if self.time_range.first >= self.time_range.last
       errors.add(:base, "L'heure de début doit être avant l'heure de fin.")
