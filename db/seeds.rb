@@ -95,8 +95,8 @@ end
   { title: "L'ESS", baseline: "Découvrez l'économie sociale et solidaire", position: 2, child_pages: [
     { key: nil, title: "C'est quoi l'ESS?", enabled: true, position: 1 },
     { key: 'key_number', title: 'Chiffres-clés', enabled: true, position: 2 },
+    { key: 'ess_map', title: 'Cartographie', enabled: true, position: 3 },
   ] },
-  { key: 'ess_map', title: 'Cartographie', enabled: true, position: 3 },
 ].each do |option|
   main_page = MainPage.where(title: option[:title]).first_or_create(
     baseline: option[:baseline],
