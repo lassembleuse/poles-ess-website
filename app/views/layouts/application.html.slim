@@ -14,6 +14,8 @@ html lang='fr'
   = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   = render 'shared/favicon'
+  - if Rails.env.production?
+    = render 'shared/analytics'
 
   body.h-full
     .relative data-controller="main-menu"
