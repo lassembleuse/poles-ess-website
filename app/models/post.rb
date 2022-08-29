@@ -26,6 +26,7 @@ class Post < ApplicationRecord
   # Callbacks ==================================================================
   validates :title, presence: true
   validates :published_at, presence: true
+  validates :image, attached: true, content_type: ['image/jpeg', 'image/jpg', 'image/gif', 'image/png']
 
   # Scopes =====================================================================
   scope :by_title, ->(val) {

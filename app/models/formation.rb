@@ -18,6 +18,7 @@ class Formation < ApplicationRecord
 
   validates :title, :schedules,
             presence: true
+  validates :image, attached: true, content_type: ['image/jpeg', 'image/jpg', 'image/gif', 'image/png']
 
   # Scopes ====================================================================
 
