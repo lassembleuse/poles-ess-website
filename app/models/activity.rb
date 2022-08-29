@@ -16,7 +16,7 @@ class Activity < ApplicationRecord
 
   validates :title,  presence: true
   validates :home_title, presence: true, if: :highlighted?
-  validates :image, attached: true, content_type: ['image/jpeg', 'image/jpg', 'image/gif', 'image/png']
+  validates :image, content_type: ['image/jpeg', 'image/jpg', 'image/gif', 'image/png']
 
   # Scopes ====================================================================
 
